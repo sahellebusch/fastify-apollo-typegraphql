@@ -1,8 +1,8 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import { Field, Int, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export default class Project {
-  @Field(type => Int)
+  @Field(_type => Int)
   id: number;
 
   @Field()

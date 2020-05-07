@@ -1,6 +1,5 @@
-import 'reflect-metadata';
 import * as statusController from '../controllers/status';
-import {RouteOptions} from 'fastify';
+import { RouteOptions } from 'fastify';
 
 const status: RouteOptions = {
   method: 'GET',

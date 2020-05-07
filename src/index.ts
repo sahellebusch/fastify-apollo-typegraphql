@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import buildServer from './server';
-import {FastifyInstance} from 'fastify';
+import { FastifyInstance } from 'fastify';
 import * as http from 'http';
 
 let server: FastifyInstance<http.Server, http.IncomingMessage, http.ServerResponse>;
