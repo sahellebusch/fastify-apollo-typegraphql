@@ -7,5 +7,5 @@ export interface ProjectData {
 
 export const projects: ProjectData[] = [
   {id: 1, name: 'Learn React Native'},
-  {id: 2, name: 'Workout'}
+  {id: 2, name: 'Workout'},
 ];
