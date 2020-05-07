@@ -1,7 +1,3 @@
-import boom from "boom";
-import { ServerResponse } from "http";
-import { FastifyRequest, FastifyReply } from "fastify";
-
 interface StatusResponse {
     status: string;
 }

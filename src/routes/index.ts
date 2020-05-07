@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import * as statusController from '../controllers/status';
 import { RouteOptions } from 'fastify';
 
