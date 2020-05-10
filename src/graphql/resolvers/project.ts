@@ -1,4 +1,4 @@
-import { Arg, Query, Resolver, Int } from 'type-graphql';
+import { Arg, Int, Query, Resolver } from 'type-graphql';
 import Project from '../schemas/Project';
 import { projects } from '../../data';
 

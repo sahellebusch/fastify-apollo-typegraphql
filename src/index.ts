@@ -1,12 +1,10 @@
 import 'reflect-metadata';
-import buildServer from './server';
-import { FastifyInstance } from 'fastify';
-import * as http from 'http';
+import buildServer, { DecoratedFastifyInstance } from './server';
 import Config from './lib/config';
 
 const config: Config = Config.init();
 
-let server: FastifyInstance<http.Server, http.IncomingMessage, http.ServerResponse>;
+let server: DecoratedFastifyInstance;
 const start = async (): Promise<void> => {
   try {
     server = await buildServer(config);

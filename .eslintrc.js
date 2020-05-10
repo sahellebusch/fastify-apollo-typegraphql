@@ -1,32 +1,35 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'prettier',
-    'plugin:prettier/recommended'
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "prettier",
+    "plugin:prettier/recommended",
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ["@typescript-eslint", "simple-import-sort"],
   parserOptions: {
-    project: './tsconfig.json',
-    sourceType: 'module',
+    project: "./tsconfig.json",
+    sourceType: "module",
     ecmaVersion: 2018,
-    tsconfigRootDir: './'
+    tsconfigRootDir: "./",
   },
   env: {
-    node: true
+    node: true,
   },
   rules: {
-    'prettier/prettier': [
-      'error',
+    "prettier/prettier": [
+      "error",
       {
         singleQuote: true,
         printWidth: 90,
-        arrowParens: 'avoid',
-        bracketSpacing: true
-      }
+        arrowParens: "avoid",
+        bracketSpacing: true,
+      },
     ],
-    '@typescript-eslint/no-unused-vars-experimental': ["warn",  { ignoredNamesRegex: '^_' }],
-    '@typescript-eslint/no-unused-vars': "off" // in favor of the one above so we can ignore vars prefixed with _
-  }
+    "@typescript-eslint/no-unused-vars-experimental": [
+      "warn",
+      { ignoredNamesRegex: "^_" },
+    ],
+    "@typescript-eslint/no-unused-vars": "off", // in favor of the one above so we can ignore vars prefixed with _
+  },
 };

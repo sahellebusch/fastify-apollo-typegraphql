@@ -2,7 +2,7 @@ import fp from 'fastify-plugin';
 import { FastifyInstance } from 'fastify';
 
 interface SharedResource {
-  obj: object;
+  resource: object;
   name: string;
 }
 
@@ -12,8 +12,8 @@ function sharedResource(
   done: Function
 ): void {
   try {
-    const { name, obj } = opts;
-    fastify.decorate(name, obj);
+    const { name, resource } = opts;
+    fastify.decorate(name, resource);
     done();
   } catch (error) {
     done(error);

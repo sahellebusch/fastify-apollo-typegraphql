@@ -1,9 +1,7 @@
 import envSchema from 'env-schema';
-
 import S, { ObjectSchema } from 'fluent-schema';
 
 const pinoLogLevels = ['fatal', 'error', 'warn', 'debug', 'info', 'trace'];
-
 const nodeEnvs = ['production', 'development'];
 
 interface EnvironmentVars {
@@ -12,9 +10,7 @@ interface EnvironmentVars {
 
 export default class Config {
   static readonly schema: ObjectSchema = S.object()
-
     .prop('NODE_ENV', S.string().enum(nodeEnvs).required())
-
     .prop('LOG_LEVEL', S.string().enum(pinoLogLevels).required());
 
   private env: EnvironmentVars;

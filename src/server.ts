@@ -16,7 +16,8 @@ export default async function buildServer(
   const server = fastify({
     logger: { level: config.get('LOG_LEVEL') },
   }) as DecoratedFastifyInstance;
-  server.register(sharedResource, { obj: config, name: 'config' });
+
+  server.register(sharedResource, { resource: config, name: 'config' });
 
   initRoutes(server).forEach(route => {
     server.route(route);
