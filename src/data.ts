@@ -6,6 +6,11 @@ export interface ProjectData {
 }
 
 export const projects: ProjectData[] = [
-  { id: 1, name: 'Learn React Native', created: new Date(), updated: new Date() },
+  {
+    id: 1,
+    name: 'Learn React Native',
+    created: new Date(),
+    updated: new Date(),
+  },
   { id: 2, name: 'Workout', created: new Date(), updated: new Date() },
 ];

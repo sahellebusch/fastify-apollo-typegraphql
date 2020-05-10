@@ -1,11 +1,16 @@
-import * as statusController from '../controllers/status';
+import StatusController from '../controllers/status';
 import { RouteOptions } from 'fastify';
+import { DecoratedFastifyInstance } from '../server';
 
-const status: RouteOptions = {
-  method: 'GET',
-  url: '/status',
-  handler: statusController.getStatus,
-};
+export default function initRoutes(
+  serverInstance: DecoratedFastifyInstance
+): RouteOptions[] {
+  const status: RouteOptions = {
+    method: 'GET',
+    url: '/status',
+    handler: new StatusController(serverInstance).getStatus,
+  };
 
-const routes = [status];
-export default routes;
+  const routes = [status];
+  return routes;
+}

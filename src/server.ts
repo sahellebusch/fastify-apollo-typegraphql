@@ -1,17 +1,24 @@
 import fastify, { FastifyInstance } from 'fastify';
 import { ApolloServer } from 'apollo-server-fastify';
 import ProjectResolver from './graphql/resolvers/project';
-import routes from './routes';
+import initRoutes from './routes';
 import { buildSchema } from 'type-graphql';
+import sharedResource from './plugins/shared-resource';
+import Config from './lib/config';
 
-import * as http from 'http';
+export interface DecoratedFastifyInstance extends FastifyInstance {
+  config?: Config;
+}
 
-export default async function buildServer(): Promise<
-  FastifyInstance<http.Server, http.IncomingMessage, http.ServerResponse>
-> {
-  const server = fastify({ logger: true });
+export default async function buildServer(
+  config: Config
+): Promise<DecoratedFastifyInstance> {
+  const server = fastify({
+    logger: { level: config.get('LOG_LEVEL') },
+  }) as DecoratedFastifyInstance;
+  server.register(sharedResource, { obj: config, name: 'config' });
 
-  routes.forEach(route => {
+  initRoutes(server).forEach(route => {
     server.route(route);
   });
 
@@ -19,6 +26,7 @@ export default async function buildServer(): Promise<
     resolvers: [ProjectResolver],
     emitSchemaFile: true,
   });
+
   const apolloServer = new ApolloServer({
     schema,
   });
